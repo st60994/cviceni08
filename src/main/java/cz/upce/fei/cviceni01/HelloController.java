@@ -3,7 +3,25 @@ package cz.upce.fei.cviceni01;
 import org.springframework.web.bind.annotation.*;
 
 /*
+@RestController je kombinací @Controller a @ResponseBody slouží přímo pro REST služby
+oproti tomu @Controller značkuje třídy pouze jako MVC controller
 
+Syntaxe různých typů souborů:
+---------------XML----------
+<root>
+  <child>
+    <subchild>.....</subchild>
+  </child>
+</root>
+--------------JSON------------
+{"name":"John", "id":123}
+------------YAML-------------
+martin:
+  name: Martin D'vloper
+  job: Developer
+  skill: Elite
+
+u YAMLu jsou důležité odsazování (tabulátory) podobně jako tomu je u pythonu
  */
 @RestController
 public class HelloController {
