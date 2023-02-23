@@ -1,5 +1,6 @@
-package cz.upce.fei.cviceni01;
+package cz.upce.fei.cviceni01.controller;
 
+import cz.upce.fei.cviceni01.Person;
 import org.springframework.web.bind.annotation.*;
 
 /*

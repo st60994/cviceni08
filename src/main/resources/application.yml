@@ -1,4 +1,28 @@
 server:
-  port : 9000
+  port: 9000
   servlet:
-    context-path : /api/v1
+    context-path: /api/v1
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:postgresql://localhost:5432/nnpia
+    username: nnpia
+    password: nnpia
+    driverClassName: org.postgresql.Driver
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+
+# ddl-auto states
+# validate: validate the schema, makes no changes to the database.
+# create-only: database creation will be generated.
+# drop: database dropping will be generated.
+# update: update the schema.
+# create: creates the schema, destroying previous data.
+# create-drop: drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped.
+# none: does nothing with the schema, makes no changes to the database
