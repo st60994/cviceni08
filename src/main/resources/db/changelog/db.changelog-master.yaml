@@ -12,29 +12,29 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name : username
+                  name: username
                   type: varchar(256)
                   constraints:
                     nullable: false
                     unique: true
               - column:
-                  name : password
+                  name: password
                   type: varchar(256)
                   constraints:
                     nullable: false
               - column:
-                  name : active
+                  name: active
                   type: boolean
                   constraints:
                     nullable: false
                     defaultValue: true
               - column:
-                  name : creation_date
+                  name: creation_date
                   type: timestamptz
                   constraints:
                     nullable: false
               - column:
-                  name : update_date
+                  name: update_date
                   type: timestamptz
                   constraints:
                     nullable: false
@@ -49,7 +49,7 @@ databaseChangeLog:
 
   - changeSet:
       id: task-roles-create-2
-      author: ondrej.chrbolka
+      author: hruby.vaclav
       changes:
         - createTable:
             tableName: task
@@ -60,22 +60,22 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name : title
+                  name: title
                   type: varchar(256)
                   constraints:
                     nullable: false
               - column:
-                  name : description
+                  name: description
                   type: text
                   constraints:
                     nullable: false
               - column:
-                  name : creation_date
+                  name: creation_date
                   type: timestamptz
                   constraints:
                     nullable: false
               - column:
-                  name : update_date
+                  name: update_date
                   type: timestamptz
                   constraints:
                     nullable: false
@@ -94,7 +94,7 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
-                  name : name
+                  name: name
                   type: varchar(256)
                   constraints:
                     nullable: false
@@ -139,31 +139,32 @@ databaseChangeLog:
 
   - changeSet:
       id: app-user-insert-1
-      author: ondrej.chrbolka
+      author: hruby.vaclav
       changes:
         - insert:
+            tableName: app_user
             columns:
               - column:
                   name: id
                   value: 0
               - column:
                   name: username
-                  value: user1
+                  value: user
               - column:
                   name: password
-                  value: user1
+                  value: 123
               - column:
                   name: active
                   value: true
               - column:
-                  name : creation_date
+                  name: creation_date
                   value: now()
               - column:
-                  name : update_date
+                  name: update_date
                   value: now()
-            tableName: app_user
 
         - insert:
+            tableName: task
             columns:
               - column:
                   name: id
@@ -175,17 +176,17 @@ databaseChangeLog:
                   name: description
                   value: description1
               - column:
-                  name : creation_date
+                  name: creation_date
                   value: now()
               - column:
-                  name : update_date
+                  name: update_date
                   value: now()
               - column:
-                  name : author_id
+                  name: author_id
                   value: 0
-            tableName: task
 
         - insert:
+            tableName: role
             columns:
               - column:
                   name: id
@@ -193,9 +194,9 @@ databaseChangeLog:
               - column:
                   name: name
                   value: VIEW_TASK
-            tableName: role
 
         - insert:
+            tableName: app_user_role
             columns:
               - column:
                   name: app_user_id
@@ -203,4 +204,3 @@ databaseChangeLog:
               - column:
                   name: role_id
                   value: 0
-            tableName: app_user_role
