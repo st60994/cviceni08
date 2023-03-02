@@ -1,5 +1,6 @@
 package cz.upce.fei.cviceni01.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -27,5 +28,6 @@ public class Role {
             inverseJoinColumns = @JoinColumn(name = "app_user_id")
     )
     @ToString.Exclude
+    @JsonIgnore
     private List<AppUser> users = Collections.emptyList();
 }
