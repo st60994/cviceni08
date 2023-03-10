@@ -1,6 +1,7 @@
 package cz.upce.fei.cviceni01.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import cz.upce.fei.cviceni01.dto.TaskResponseDtoV1;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -28,4 +29,15 @@ public class Task {
     @ToString.Exclude
     @JsonIgnore
     private AppUser author;
+
+
+    public TaskResponseDtoV1 toDto(){
+        return new TaskResponseDtoV1(
+                getId(),
+                getTitle(),
+                getDescription(),
+                getCreationDate(),
+                getUpdateDate()
+        );
+    }
 }

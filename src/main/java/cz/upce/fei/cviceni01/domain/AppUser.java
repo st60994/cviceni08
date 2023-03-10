@@ -1,5 +1,6 @@
 package cz.upce.fei.cviceni01.domain;
 
+import cz.upce.fei.cviceni01.dto.AppUserDto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -46,4 +47,15 @@ public class AppUser {
 
     @ManyToMany(mappedBy = "users")
     private List<Role> roles = Collections.emptyList();
+
+    public AppUserDto toDto() {
+        return new AppUserDto(
+                getId(),
+                getUsername(),
+                getPassword(),
+                getActive(),
+                getCreationDate(),
+                getUpdateDate()
+        );
+    }
 }
