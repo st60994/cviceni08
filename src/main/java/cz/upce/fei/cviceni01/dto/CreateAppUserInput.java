@@ -1,5 +1,6 @@
 package cz.upce.fei.cviceni01.dto;
 
+import cz.upce.fei.cviceni01.domain.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AppUserInputQLDto {
-    private Long id;
+public class CreateAppUserInput {
     private String username;
 
     private String password;
@@ -21,9 +21,8 @@ public class AppUserInputQLDto {
 
     private String updateDate;
 
-    public AppUserDto toAppUserDto() {
-        return new AppUserDto(
-                getId(),
+    public AppUser toAppUser() {
+        return new AppUser(
                 getUsername(),
                 getPassword(),
                 getActive(),

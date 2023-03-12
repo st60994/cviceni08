@@ -19,11 +19,12 @@ spring:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
 
   graphql:
+    servlet:
+      exception-handlers-enabled: true
     graphiql:
       enabled: true
       path: /graphiql
     path: /graphql
-
 # ddl-auto states
 # validate: validate the schema, makes no changes to the database.
 # create-only: database creation will be generated.

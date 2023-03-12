@@ -27,4 +27,6 @@ input CreateAppUserInput{
     username: String!,
     password: String!,
     active: Boolean!
+    creationDate: String!,
+    updateDate: String
 }
