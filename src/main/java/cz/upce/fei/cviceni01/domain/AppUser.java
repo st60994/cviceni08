@@ -1,7 +1,9 @@
 package cz.upce.fei.cviceni01.domain;
 
 import cz.upce.fei.cviceni01.dto.AppUserDto;
+import liquibase.repackaged.org.apache.commons.lang3.builder.ToStringExclude;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -16,6 +18,15 @@ import java.util.Set;
 public class AppUser {
 
     public AppUser(String username, String password, Boolean active, LocalDateTime creationDate, LocalDateTime updateDate) {
+        this.username = username;
+        this.password = password;
+        this.active = active;
+        this.creationDate = creationDate;
+        this.updateDate = updateDate;
+    }
+
+    public AppUser(Long id, String username, String password, Boolean active, LocalDateTime creationDate, LocalDateTime updateDate) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.active = active;
@@ -43,9 +54,11 @@ public class AppUser {
     private LocalDateTime updateDate;
 
     @OneToMany(mappedBy = "author")
+    @EqualsAndHashCode.Exclude
     private List<Task> tasks = Collections.emptyList();
 
     @ManyToMany(mappedBy = "users")
+    @EqualsAndHashCode.Exclude
     private List<Role> roles = Collections.emptyList();
 
     public AppUserDto toDto() {

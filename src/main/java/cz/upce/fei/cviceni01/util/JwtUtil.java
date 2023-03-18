@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Service
 public class JwtUtil {
-    private static final String JWT_SECRET = "eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY3Nzc4MDU1MCwiaWF0IjoxNjc3NzgwNTUwfQ.3lC1OMK7IJxEV_gO5yMmkD8lgOpKPf3yIeQ5SYjniAReRQzYDMipPW9FOaEG7vild_EXMgpbd7nycv5TNAbxCQ"; // can be generated dynamically
+    public static final String JWT_SECRET = "eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY3Nzc4MDU1MCwiaWF0IjoxNjc3NzgwNTUwfQ.3lC1OMK7IJxEV_gO5yMmkD8lgOpKPf3yIeQ5SYjniAReRQzYDMipPW9FOaEG7vild_EXMgpbd7nycv5TNAbxCQ"; // can be generated dynamically
 
     private static final long JWT_EXPIRATION_MS = 60 * 60 * 1000; // 1 hour
 

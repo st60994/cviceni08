@@ -14,6 +14,12 @@ spring:
     username: nnpia
     password: nnpia
     driverClassName: org.postgresql.Driver
+  beans:
+      myRestTemplate:
+        class: org.springframework.web.client.RestTemplate
+        properties:
+          connectTimeout: 10000
+          readTimeout: 10000
 
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
