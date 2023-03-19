@@ -67,7 +67,7 @@ class AppUserControllerTest {
     }
 
     @Test
-    void findAll() throws Exception {
+    void findAppUser() throws Exception {
         String token = Jwts.builder()
                 .setSubject("userName")
                 .setExpiration(new Date(System.currentTimeMillis() + 86400000))
@@ -77,12 +77,29 @@ class AppUserControllerTest {
         headers.setBearerAuth(token);
 
         AppUser appUser = appUserRepository.save(Example.EXISTING);
-        HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        String url = "http://localhost:" + port + "/api/v1/app-user/" + appUser.getId();
+        String url = "http://localhost:" + port + "/app-user/" + appUser.getId();
         mockMvc.perform(MockMvcRequestBuilders.get(url)
                         .header("Authorization", "Bearer " + token))
                 .andDo(print())
                 .andExpect(status().isOk());
+
+    }
+
+    @Test
+    void findAppUserNonExistant() throws Exception {
+        String token = Jwts.builder()
+                .setSubject("userName")
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .signWith(SignatureAlgorithm.HS512, secret.getBytes())
+                .compact();
+        headers = new HttpHeaders();
+        headers.setBearerAuth(token);
+        AppUser appUser = appUserRepository.save(Example.EXISTING);
+        String url = "http://localhost:" + port + "/app-user/" + appUser.getId() + 1;
+        mockMvc.perform(MockMvcRequestBuilders.get(url)
+                        .header("Authorization", "Bearer " + token))
+                .andDo(print())
+                .andExpect(status().isNotFound());
 
     }
 
