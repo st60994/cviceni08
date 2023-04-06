@@ -5,6 +5,7 @@ import cz.upce.fei.cviceni01.repository.TaskRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -15,5 +16,10 @@ public class TaskService {
 
     public List<Task> findAllByAuthorId(Long authorId) {
         return taskRepository.findAllByAuthorId(authorId);
+    }
+
+    @GetMapping("")
+    public List<Task> findAllTasks() {
+        return taskRepository.findAll();
     }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
     List<Task> findAllByAuthorId(final Long authorId);
+
+    List<Task> findAll();
 }

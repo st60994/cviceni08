@@ -18,6 +18,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 @RequestMapping("/app-user")
 public class AppUserController {
 
@@ -25,6 +26,7 @@ public class AppUserController {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
     private final AppUserService appUserService;
     private final RoleRepository roleRepository;
 
