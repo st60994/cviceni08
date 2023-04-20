@@ -22,4 +22,14 @@ public class TaskService {
     public List<Task> findAllTasks() {
         return taskRepository.findAll();
     }
+
+    public Task findById(Long id) throws ResourceNotFoundException {
+        var result = taskRepository.findById(id);
+
+        if (result.isPresent()){
+            throw new ResourceNotFoundException();
+        }
+
+        return result.get();
+    }
 }

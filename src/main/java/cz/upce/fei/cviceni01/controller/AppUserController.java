@@ -7,6 +7,7 @@ import cz.upce.fei.cviceni01.repository.RoleRepository;
 import cz.upce.fei.cviceni01.service.AppUserService;
 import cz.upce.fei.cviceni01.service.ResourceNotFoundException;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +28,8 @@ public class AppUserController {
         return new RestTemplate();
     }
 
-    private final AppUserService appUserService;
+    private AppUserService appUserService;
     private final RoleRepository roleRepository;
-
     @GetMapping
     public List<AppUser> findAll() {
         return appUserService.findAllByActiveEquals(true);

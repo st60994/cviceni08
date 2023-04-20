@@ -1,12 +1,11 @@
 package cz.upce.fei.cviceni01.controller;
 
 import cz.upce.fei.cviceni01.domain.Task;
+import cz.upce.fei.cviceni01.service.ResourceNotFoundException;
 import cz.upce.fei.cviceni01.service.TaskService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,4 +22,10 @@ public class TaskController {
         return taskService.findAllTasks();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findById(@PathVariable final Long id) throws ResourceNotFoundException {
+        var result = taskService.findById(id);
+
+        return ResponseEntity.ok(result.toDto());
+    }
 }
